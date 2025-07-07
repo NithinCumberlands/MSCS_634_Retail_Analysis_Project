@@ -16,8 +16,6 @@ For this project, I used a **Retail Transactions Dataset** which contains **1,00
 - **Season**: Season during which the transaction took place (e.g., Winter, Fall).
 - **Promotion**: The promotion applied to the transaction (e.g., Buy One Get One, Discount on Selected Items).
 
-I chose this dataset because it provides valuable insights into retail sales patterns, which can be useful for analyzing customer behavior, identifying popular products, and understanding sales trends.
-
 ## Key Insights from My Analysis
 - **Most Popular Product Categories**: By analyzing the transaction data, I identified the most popular product categories based on total sales volume.
 - **Time-Based Trends**: I observed peak sales times, such as holidays or weekends, that drive higher transaction volumes.
@@ -38,9 +36,4 @@ I chose this dataset because it provides valuable insights into retail sales pat
 ## Conclusion
 This deliverable focused on the **data cleaning** and **exploratory data analysis (EDA)** of the retail transactions dataset. Through this process, I handled missing data, removed duplicates, and addressed outliers. I also derived key insights, such as identifying the most popular product categories and observing sales trends over time. The next steps in the project will involve building predictive models to analyze the factors that influence sales.
 
-## Files Included
-- **`Retail_Transactions_Dataset.csv`**: The raw dataset.
-- **`cleaned_retail_transactions.csv`**: The cleaned version of the dataset after data preparation.
-- **`Retail_Transactions_EDA.ipynb`**: Jupyter notebook containing all the code for data cleaning, analysis, and visualizations.
-- **`Comprehensive_Report.pdf`**: The report summarizing the project steps, challenges, insights, and next steps.
 
