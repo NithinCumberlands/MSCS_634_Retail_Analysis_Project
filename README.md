@@ -1,39 +1,37 @@
 # Retail_Transactions_Analysis
 
 ## Dataset Summary
-For this project, I used a **Retail Transactions Dataset** which contains **1,000,000 entries** and **13 columns**. The dataset includes a variety of features such as:
-- **Transaction_ID**: A unique identifier for each transaction.
-- **Date**: The timestamp of when the transaction occurred.
-- **Customer_Name**: Name of the customer making the purchase.
-- **Product**: List of products purchased.
-- **Total_Items**: The total number of items purchased in the transaction.
-- **Total_Cost**: The total cost of the items purchased.
-- **Payment_Method**: The method of payment used (e.g., Cash, Mobile Payment).
-- **City**: City where the transaction took place.
-- **Store_Type**: Type of store where the transaction occurred (e.g., Warehouse Club, Specialty Store).
-- **Discount_Applied**: Whether a discount was applied to the transaction (True/False).
-- **Customer_Category**: The category of the customer (e.g., Homemaker, Professional).
-- **Season**: Season during which the transaction took place (e.g., Winter, Fall).
-- **Promotion**: The promotion applied to the transaction (e.g., Buy One Get One, Discount on Selected Items).
+For this project, I used a **Retail Transactions Dataset** containing **541,909 entries** and **8 columns**. The dataset includes the following features:
+
+- **InvoiceNo**: A unique invoice number for each transaction.
+- **StockCode**: Product (item) code.
+- **Description**: Product (item) name.
+- **Quantity**: The number of items purchased for each transaction line.
+- **InvoiceDate**: The date and time when each transaction was generated.
+- **UnitPrice**: Unit price of the product in sterling.
+- **CustomerID**: Unique identifier for each customer (may contain missing values).
+- **Country**: Country of the customer.
 
 ## Key Insights from My Analysis
-- **Most Popular Product Categories**: By analyzing the transaction data, I identified the most popular product categories based on total sales volume.
-- **Time-Based Trends**: I observed peak sales times, such as holidays or weekends, that drive higher transaction volumes.
-- **Price Distribution**: The **Price** distribution was right-skewed, indicating that most products have lower prices with a few higher-priced items.
-- **Outliers**: After detecting outliers in **Quantity** and **Price** using boxplots, I removed extreme outliers to improve the quality of the analysis.
+- **Top-Selling Items**: I identified products with the highest total quantities sold by aggregating `Quantity`.
+- **Seasonal Trends**: By parsing `InvoiceDate`, I observed peak transaction volumes during holiday seasons (e.g., December).
+- **Revenue Distribution**: Calculated revenue per line (`Quantity × UnitPrice`) and found a right-skewed distribution, indicating most orders are low-value with occasional high-value transactions.
+- **Geographic Distribution**: The majority of transactions occurred in the United Kingdom, with smaller volumes in other European countries and beyond.
 
 ## Major Steps Taken in Data Cleaning and Exploration
-1. **Missing Values**: I handled missing values by imputing the **Total_Cost** and **Total_Items** columns with the mean of each respective column.
-2. **Duplicates**: I checked for duplicate rows and removed them to ensure no redundancy in the dataset.
-3. **Outliers**: I identified and removed outliers in **Quantity** and **Price** using the **IQR method**, ensuring that extreme values do not distort the analysis.
-4. **Date Parsing**: I converted the **Date** column into a proper datetime format to allow for more meaningful time-based analysis. I also extracted additional time features such as **Year**, **Month**, **Day**, and **Day of Week** to explore trends over time.
+1. **Handling Missing Values**: Imputed missing `CustomerID` entries where needed, and dropped any rows with critical missing fields.
+2. **Removing Duplicates**: Detected and removed exact duplicate rows to avoid redundancy.
+3. **Outlier Detection**: Used the **IQR method** on `Quantity` and derived `Total_Cost` to filter out extreme values that could distort analysis.
+4. **Feature Engineering**:  
+   - Created `Total_Cost` as `Quantity × UnitPrice`.  
+   - Parsed `InvoiceDate` into datetime and extracted `Year`, `Month`, `Day`, and `DayOfWeek` for time-series analysis.
 
 ## Challenges Encountered and How They Were Addressed
-- **Handling Missing Data**: Initially, I thought about removing rows with missing values, but this would have resulted in losing a large portion of the data. Instead, I chose to **impute** the missing values using the **mean** to retain data consistency.
-- **Outliers**: Outliers in **Quantity** and **Price** posed a challenge because they could distort my findings. After visualizing the data using boxplots, I decided to **remove the extreme outliers** using the **IQR method**, which resulted in cleaner and more reliable data.
-- **Date Format Issues**: The **Date** column initially had inconsistent formats, so I had to convert it into a **datetime** format to enable time-based analysis. This was crucial for exploring trends over time.
+- **Inconsistent Date Formats**: Converted the `InvoiceDate` column into a unified datetime format to enable chronological analyses.
+- **Missing Customer IDs**: Since many transactions lacked `CustomerID`, I decided to retain these rows but excluded them from any customer-specific segmentation analyses.
+- **Skewed Distributions**: Addressed right-skewness in revenue by using log-transformations where appropriate for visualization and summary statistics.
 
 ## Conclusion
-This deliverable focused on the **data cleaning** and **exploratory data analysis (EDA)** of the retail transactions dataset. Through this process, I handled missing data, removed duplicates, and addressed outliers. I also derived key insights, such as identifying the most popular product categories and observing sales trends over time. The next steps in the project will involve building predictive models to analyze the factors that influence sales.
+The focus of this deliverable was on **cleaning** and **exploratory data analysis (EDA)** of real-world retail transaction data. I handled missing and duplicate data, engineered new features, and extracted actionable insights such as top-selling products and seasonality effects. Future work will involve building forecasting models to predict sales volume and customer behavior.  
 
 
